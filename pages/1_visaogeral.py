@@ -204,7 +204,7 @@ with tab1:
 #Maps das localizações
         
     with st.container():         
-    	#st.markdown('Localização dos Restaurantes')
+    	 st.markdown('# Localização dos Restaurantes cadastrados no Zomato App')
               df_aux=(df.loc[:,['Restaurant ID','Restaurant Name','City', 'Average Cost for two','Currency','Longitude', 'Latitude', 'Cuisines', 'Aggregate rating']].groupby(['Restaurant ID']).max().reset_index())
           
               map=folium.Map()
@@ -220,7 +220,7 @@ with tab1:
                             icon=folium.Icon(icon='home')).add_to(marker_cluster) 
       
               folium_static(map, width=880, height=300) #para usar no streamlit
-              st.metric('Localização Mundial dos Restaurantes cadastrados na plataforma Zomato', map)
+             mato', map)
       
 
 
