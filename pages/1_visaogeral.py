@@ -204,14 +204,11 @@ with tab1:
 #Maps das localizações
         
     with st.container():         
-    	 st.markdown('# Localização dos Restaurantes cadastrados no Zomato App')
-              df_aux=(df.loc[:,['Restaurant ID','Restaurant Name','City', 'Average Cost for two','Currency','Longitude', 'Latitude', 'Cuisines', 'Aggregate rating']].groupby(['Restaurant ID']).max().reset_index())
-          
-              map=folium.Map()
-        
-              marker_cluster=MarkerCluster(name ='restaurantes').add_to(map)
-      
-              for i, location_info in df_aux.iterrows():
+         st.markdown('# Localização dos Restaurantes cadastrados no Zomato App')
+         df_aux=(df.loc[:,['Restaurant ID','Restaurant Name','City', 'Average Cost for two','Currency','Longitude', 'Latitude', 'Cuisines', 'Aggregate rating']].groupby(['Restaurant ID']).max().reset_index())
+         map=folium.Map()
+         marker_cluster=MarkerCluster(name ='restaurantes').add_to(map)      
+         for i, location_info in df_aux.iterrows():
                       folium.Marker([location_info['Latitude'],location_info['Longitude']],
                             popup=location_info[['Restaurant Name',
                             'Average Cost for two',
@@ -219,8 +216,7 @@ with tab1:
                             'Aggregate rating']],
                             icon=folium.Icon(icon='home')).add_to(marker_cluster) 
       
-              folium_static(map, width=880, height=300) #para usar no streamlit
-             mato', map)
+         folium_static(map, width=880, height=300) 
       
 
 
